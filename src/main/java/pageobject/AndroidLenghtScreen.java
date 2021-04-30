@@ -31,21 +31,36 @@ public class AndroidLenghtScreen {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[3]/android.widget.TextView[1]")
     public WebElement ValueConverted;
 
-    public String VerifyLenghtScreenTitle(){
-        String LenghtResult = "";
-        LenghtResult = LenghtScreenTitle.getText();
+    public Boolean VerifyLenghtScreenTitle(){
+        Boolean LenghtResult = false;
+        LenghtResult = LenghtScreenTitle.isDisplayed();
         return LenghtResult;
     }
 
-    public int VerifyValueToConverted(){
-        String Default = "0";
+    public int VerifyValueToConvert(){
+        String Default = "";
         Default = ValueToBeConverted.getText();
         int ToBeValue = Integer.parseInt(Default);
         return ToBeValue;
     }
 
+    public double VerifyValueConverted(){
+        String Result = "";
+        Result = ValueConverted.getText();
+        double Value =Double.parseDouble(Result);
+        return Value;
+    }
+
     public void ClickBtnEight(){
         NumberEight.click();
+    }
+
+    public void ClickDropOne(){
+        ConvParamOne.click();
+    }
+
+    public void SelectInchOption(){
+        InchOption.click();
     }
 
 }

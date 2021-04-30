@@ -1,9 +1,11 @@
 package testcases;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import org.aspectj.weaver.Utils;
 import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.springframework.core.annotation.Order;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -29,28 +31,44 @@ public class LenghtTestCases{
 
     }
 
-    @Test
+
+    @Test(priority = 1)
     public void ValidateLenghtScreen(){
         AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
         androidLenghtScreen.VerifyLenghtScreenTitle();
-        if(androidLenghtScreen.VerifyLenghtScreenTitle() == "Length"){
-            System.out.println("pass");
+        if(androidLenghtScreen.VerifyLenghtScreenTitle() == true){
+            System.out.println("Pass Screen Title");
         }
         else{
-            System.out.println("Validation failed");
+            System.out.println("Title is nos displayed");
         }
     }
 
-    @Test
+    @Test(priority = 2)
     public void ValidateTypingNum(){
         AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
         androidLenghtScreen.ClickBtnEight();
-        if (androidLenghtScreen.VerifyValueToConverted()==8){
-            System.out.println("pass");
+        if (androidLenghtScreen.VerifyValueToConvert() == 8){
+            System.out.println("Pass Typing 8");
         }
         else{
-            System.out.println("Validation failed");
+            System.out.println("Validation failed on Typing 8");
         }
+    }
+
+    @Test(priority = 3)
+    public void ValidateConvertResult(){
+        AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
+        androidLenghtScreen.ClickDropOne();
+        androidLenghtScreen.SelectInchOption();
+
+        if (androidLenghtScreen.VerifyValueConverted() == 20.32){
+            System.out.println("Pass converted value");
+        }
+        else{
+            System.out.println(androidLenghtScreen.VerifyValueConverted());
+        }
+
     }
 
     @AfterTest
