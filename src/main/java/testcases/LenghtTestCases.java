@@ -20,9 +20,8 @@ public class LenghtTestCases{
         cap.setCapability("platformName", "android");
         cap.setCapability("platformVersion", "11");
         cap.setCapability("deviceName", "emulator-5554");
-        cap.setCapability("app","C:\\Users\\jjsan\\Downloads\\PreciseUnitConversion.apk");
+        cap.setCapability("app","[Add local Path to the project]\\KoombeaAutov2\\src\\main\\resources\\PreciseUnitConversion.apk");
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
-
     }
 
 
