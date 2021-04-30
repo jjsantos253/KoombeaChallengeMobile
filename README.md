@@ -1,5 +1,5 @@
 # KoombeaChallengeMobile
-
+This project was made to measure my abilities automating a requirement for Koombea, the project needed to be on a "page object model" format, and also needed the use of cucumber, however that last part has not been done yet, instead the project is currently using TestNG which will be replaced in future updates. 
 
 ## Prerequisites 
 Besides this project, you will need to setup your local environment with the following:
