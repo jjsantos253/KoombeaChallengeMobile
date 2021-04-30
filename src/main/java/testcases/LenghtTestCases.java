@@ -1,6 +1,7 @@
 package testcases;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
@@ -32,7 +33,19 @@ public class LenghtTestCases{
     public void ValidateLenghtScreen(){
         AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
         androidLenghtScreen.VerifyLenghtScreenTitle();
-        if(androidLenghtScreen.VerifyLenghtScreenTitle() == true){
+        if(androidLenghtScreen.VerifyLenghtScreenTitle() == "Length"){
+            System.out.println("pass");
+        }
+        else{
+            System.out.println("Validation failed");
+        }
+    }
+
+    @Test
+    public void ValidateTypingNum(){
+        AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
+        androidLenghtScreen.ClickBtnEight();
+        if (androidLenghtScreen.VerifyValueToConverted()==8){
             System.out.println("pass");
         }
         else{
