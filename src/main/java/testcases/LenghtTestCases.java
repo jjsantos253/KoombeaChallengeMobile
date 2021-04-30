@@ -1,16 +1,12 @@
 package testcases;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import org.aspectj.weaver.Utils;
-import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.springframework.core.annotation.Order;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageobject.AndroidLenghtScreen;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -20,8 +16,6 @@ public class LenghtTestCases{
 
     @BeforeClass
     public void LaunchDriver() throws MalformedURLException{
-       // Setup setup = new Setup();
-        //setup.InitDriver();
         DesiredCapabilities cap= new DesiredCapabilities();
         cap.setCapability("platformName", "android");
         cap.setCapability("platformVersion", "11");
