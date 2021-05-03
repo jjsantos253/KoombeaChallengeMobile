@@ -1,13 +1,15 @@
 package pageobject;
 
+import config.Utils;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import java.util.concurrent.TimeUnit;
 
-public class AndroidLenghtScreen {
+public class AndroidLenghtScreen extends Utils{
+
 
     public AndroidLenghtScreen(AppiumDriver<WebElement> driver){
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -49,6 +51,10 @@ public class AndroidLenghtScreen {
         Result = ValueConverted.getText();
         double Value =Double.parseDouble(Result);
         return Value;
+    }
+    public void Wait(int time){
+        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+
     }
 
     public void ClickBtnEight(){
