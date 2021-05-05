@@ -1,4 +1,4 @@
-Feature: Area screen should allow the user to convert different space areas
+Feature: Area screen should allow the user to convert different space units
 
   Scenario: Validate the title of the screen
     Given That I launched the app
