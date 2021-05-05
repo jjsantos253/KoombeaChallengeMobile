@@ -3,9 +3,7 @@ import config.Utils;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import pageobject.AndroidCommonObjects;
 import pageobject.AndroidLenghtScreen;
 import java.net.MalformedURLException;
 
@@ -16,12 +14,12 @@ public class LenghtTestCases extends Utils{
         Utils.InitDriver();
     }
 
-   @Then("^The Lenght title is displayed$")
+   @Then("^The title is displayed$")
    public void ValidateLenghtScreen(){
-        AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
-        ExplicitWait(androidLenghtScreen.LenghtScreenTitle);
-        androidLenghtScreen.VerifyLenghtScreenTitle();
-        if(androidLenghtScreen.VerifyLenghtScreenTitle() == true){
+        AndroidCommonObjects androidCommonObjects = new AndroidCommonObjects(driver);
+        ExplicitWait(androidCommonObjects.ScreenTitle);
+        androidCommonObjects.VerifyScreenTitle();
+        if(androidCommonObjects.VerifyScreenTitle() == true){
             System.out.println("Pass Screen Title");
         }
         else{
@@ -29,10 +27,10 @@ public class LenghtTestCases extends Utils{
         }
     }
 
-    @And("^Type the number 8$")
+    @And("^I typed the number 8$")
     public void ValidateTypingNum(){
-        AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
-        androidLenghtScreen.ClickBtnEight();
+        AndroidCommonObjects androidCommonObjects = new AndroidCommonObjects(driver);
+        androidCommonObjects.ClickBtnEight();
     }
     @Then("^The number 8 is typed$")
     public void ValidateNumTyped(){
@@ -44,20 +42,20 @@ public class LenghtTestCases extends Utils{
             System.out.println("Validation failed on Typing 8");
         }
     }
-    @And("^Conversion dropdown is typed$")
+    @And("^I taped the conversion type dropdown$")
     public void ValidateShowDropdown(){
         AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
         androidLenghtScreen.ClickDropOne();
 
     }
-    @And("^Select the Inch option$")
+    @And("^I select the Inch option$")
     public void ValidateSelectInch(){
         AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
         androidLenghtScreen.SelectInchOption();
 
     }
 
-    @Then("^The inch value was converted$")
+    @Then("^The inch value is converted$")
     public void ValidateConvertResult(){
         AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
 
@@ -70,11 +68,33 @@ public class LenghtTestCases extends Utils{
 
     }
 
-    @AfterTest
-    public void ExitDriver() throws MalformedURLException {
-        Utils.CloseDriver();
+    @And("^I clicked the side menu$")
+    public void ShowSideMenu() {
+        AndroidCommonObjects androidCommonObjects = new AndroidCommonObjects(driver);
+        androidCommonObjects.ClickBtnMenu();
     }
 
+    @And("^I swaped the convertion units$")
+    public void SwapUnit() {
+        AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
+        androidLenghtScreen.SwapUnits();
+    }
+    @Then("^The unit values are swaped$")
+    public void ValidateSwapedUnit(){
+        AndroidLenghtScreen androidLenghtScreen = new AndroidLenghtScreen(driver);
 
+        if (androidLenghtScreen.GetTextUnitOne() == "Centimeter") {
+            System.out.println("Pass converted value");
+
+            if (androidLenghtScreen.GetTextUnitTwo() == "Foot"){
+                System.out.println("Pass converted value");
+            }
+
+        }
+        else{
+            System.out.println("Values were not swaped");
+        }
+
+    }
 
 }

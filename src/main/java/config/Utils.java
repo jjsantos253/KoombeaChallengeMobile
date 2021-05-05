@@ -16,9 +16,9 @@ public class Utils {
     public static void InitDriver() throws MalformedURLException {
         DesiredCapabilities cap= new DesiredCapabilities();
         cap.setCapability("platformName", "android");
-        cap.setCapability("platformVersion", "11");
+        cap.setCapability("platformVersion", "10");
         cap.setCapability("deviceName", "emulator-5554");
-        cap.setCapability("app","[ADD LOCAL PATH TO PROJECT]\\KoombeaAutov2\\src\\main\\resources\\PreciseUnitConversion.apk");
+        cap.setCapability("app","C:\\Users\\jjsan\\Downloads\\KoombeaAutov2\\src\\main\\resources\\PreciseUnitConversion.apk");
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
     }
 
@@ -30,4 +30,6 @@ public class Utils {
         (new WebDriverWait(driver,10)).until(ExpectedConditions
                 .elementToBeClickable(element));
     }
+
+
 }

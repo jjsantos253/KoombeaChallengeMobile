@@ -6,7 +6,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import java.util.concurrent.TimeUnit;
 
 public class AndroidLenghtScreen extends Utils{
 
@@ -15,17 +14,14 @@ public class AndroidLenghtScreen extends Utils{
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy( xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView")
-    public WebElement LenghtScreenTitle;
-
     @AndroidFindBy( xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[1]/android.widget.Spinner[1]/android.widget.RelativeLayout/android.widget.TextView")
     public WebElement ConvParamOne;
 
+    @AndroidFindBy( xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[1]/android.widget.Spinner[2]/android.widget.RelativeLayout/android.widget.TextView")
+    public WebElement ConvParamTwo;
+
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.RelativeLayout[4]/android.widget.TextView[1]")
     public WebElement InchOption;
-
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.Button[2]")
-    public WebElement NumberEight;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.TextView")
     public WebElement ValueToBeConverted;
@@ -33,11 +29,9 @@ public class AndroidLenghtScreen extends Utils{
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[3]/android.widget.TextView[1]")
     public WebElement ValueConverted;
 
-    public Boolean VerifyLenghtScreenTitle(){
-        Boolean LenghtResult = false;
-        LenghtResult = LenghtScreenTitle.isDisplayed();
-        return LenghtResult;
-    }
+    @AndroidFindBy(xpath = "(//android.widget.ImageButton[@content-desc=\"Swap units\"])[1]")
+    public WebElement SwapUnit;
+
 
     public int VerifyValueToConvert(){
         String Default = "";
@@ -52,14 +46,19 @@ public class AndroidLenghtScreen extends Utils{
         double Value =Double.parseDouble(Result);
         return Value;
     }
-    public void Wait(int time){
-        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
 
+    public String GetTextUnitOne(){
+            String Unit1 = "";
+            Unit1 = ConvParamOne.getText();
+            return Unit1;
     }
 
-    public void ClickBtnEight(){
-        NumberEight.click();
+    public String GetTextUnitTwo(){
+        String Unit2 = "";
+        Unit2 = ConvParamTwo.getText();
+        return Unit2;
     }
+
 
     public void ClickDropOne(){
         ConvParamOne.click();
@@ -68,5 +67,7 @@ public class AndroidLenghtScreen extends Utils{
     public void SelectInchOption(){
         InchOption.click();
     }
-
+    public void SwapUnits(){
+        SwapUnit.click();
+    }
 }
