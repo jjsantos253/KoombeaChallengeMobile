@@ -6,7 +6,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import java.util.concurrent.TimeUnit;
 
 public class AndroidCommonObjects extends Utils{
 
